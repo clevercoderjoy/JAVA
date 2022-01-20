@@ -29,6 +29,30 @@ import java.util.*;
 public class HighestAltitude{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size of the array: ");
+        int n = sc.nextInt();
+        int[] gainArray = new int[n];
+        takeInput(gainArray, n);
         sc.close();
+    }
+
+    static void takeInput(int[] gainArray, int n){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the values for the array: ");
+        for (int i = 0; i < n; i++) {
+            gainArray[i] = sc.nextInt();
+        }
+        getHighestAltitude(gainArray);
+    }
+
+    static void getHighestAltitude(int[] gainArray){
+        int maxAltitude = 0;
+        int currentAltitude = 0;
+        for (int i : gainArray) {
+            currentAltitude = currentAltitude + i;
+            if (currentAltitude > maxAltitude)
+                maxAltitude = currentAltitude;
+        }
+        System.out.println("Highest altitude: " + maxAltitude);
     }
 }

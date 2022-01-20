@@ -22,7 +22,7 @@ public class Prime {
                 break;
             }
         }
-        if(flag == false){
+        if(!flag){
             return (i + " is not prime.");
         }
         else{
