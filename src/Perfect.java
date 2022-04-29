@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.Scanner;
 public class Perfect {
     public static void main(String args[]){
@@ -10,10 +12,10 @@ public class Perfect {
             }
         }
         if(sum == num){
-            System.out.println("Perfect!");
+            System.out.println("LeetCode.Perfect!");
         }
         else{
-            System.out.println("Not Perfect!");
+            System.out.println("Not LeetCode.Perfect!");
         }
     }
 }

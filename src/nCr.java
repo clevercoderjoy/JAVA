@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.Scanner;
 public class nCr {
     public static void main(String args[]){

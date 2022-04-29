@@ -1,6 +1,8 @@
+package LeetCode;
+
 import java.util.Scanner;
 public class Armstrong {
-    public static void main(String args[]){
+    public static void main(String[] args){
         Scanner ip = new Scanner(System.in);
         System.out.println("Enter a number.");
         int num = ip.nextInt();
