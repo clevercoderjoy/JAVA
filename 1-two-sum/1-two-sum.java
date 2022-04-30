@@ -6,8 +6,8 @@ class Solution {
         int[] res = new int[2];
         int start = 0;
         int end = n - 1;
-        if(nums.length == 2 && nums[0] + nums[1] == target)
-            return new int[] {0, 1};
+//         if(nums.length == 2 && nums[0] + nums[1] == target)
+//             return new int[] {0, 1};
         
         while(start < end){
             int sum = copy[start] + copy[end];
