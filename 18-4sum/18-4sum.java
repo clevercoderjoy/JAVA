@@ -1,39 +1,48 @@
 class Solution {
-    public List<List<Integer>> fourSum(int[] nums, int target) {
-           Arrays.sort(nums);
-       List<List<Integer>> list = new ArrayList();
-       long target1 = target;
-
-    for(int j=0;j<=nums.length-4;j++)
-    {
-        if(j> 0 && nums[j]==nums[j-1]) continue; //skip duplicates
-        for(int i=j+1;i<=nums.length-3;i++)
-        {
-             if(i> j+1 && nums[i]==nums[i-1]) continue;  //skip duplicates
-          int first = i+1;
-          int last = nums.length-1;
-          while(first<last)
-          {
-              long firstTarget =   nums[first] + nums[last];  //Important to take as long to avoid overflow
-              long secondTarget =  nums[i] + nums[j];
-             if( firstTarget + secondTarget< (long)target1)  first++;
-             else if(firstTarget + secondTarget> (long)target1)  last--;
-              else
-              {
-                   List<Integer> newList = new ArrayList();
-                  newList.add(nums[j]);
-                  newList.add(nums[i]);
-                  newList.add(nums[first]);
-                  newList.add(nums[last]);
-                  list.add(new ArrayList<>(newList));
-                  while (first <last && nums[first] == nums[first+1]) first++; //very important
-                    while (first < last && nums[last] == nums[last-1]) last--; //lines of code to skip duplicates
-                  first++;
-                  last--;
+    public List<List<Integer>> fourSum(int[] nums, int target1) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(nums == null || nums.length == 0)
+            return res;
+        Arrays.sort(nums);
+        int n = nums.length;
+        long target = target1;
+        for(int i = 0; i < n; i++){
+            for(int j = i + 1; j < n; j++){
+                long subRes = target - nums[i] - nums[j];
+                int left = j + 1;
+                int right = n - 1;
+                while(left < right){
+                    long twoSum = nums[left] + nums[right];
+                    if(twoSum < subRes){
+                        left++;
+                    }
+                    else if(twoSum > subRes){
+                        right--;
+                    }
+                    else{
+                        List<Integer> quads = new ArrayList<>();
+                        quads.add(nums[i]);
+                        quads.add(nums[j]);
+                        quads.add(nums[left]);
+                        quads.add(nums[right]);
+                        res.add(quads);
+                        
+                        while(left < right && nums[left] == quads.get(2)){
+                            left++;
+                        }
+                        while(left < right && nums[right] == quads.get(3)){
+                            right--;
+                        }
+                    }
+                }
+                while(j + 1 < n && nums[j + 1] == nums[j]){
+                    j++;
+                }
             }
-          }
+            while(i + 1 < n && nums[i + 1] == nums[i]){
+                i++;
+            }
         }
-    }
-        return list;
+        return res;
     }
 }
