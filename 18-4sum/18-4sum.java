@@ -1,8 +1,9 @@
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target1) {
         List<List<Integer>> res = new ArrayList<>();
-        if(nums == null || nums.length == 0)
+        if(nums == null || nums.length == 0){
             return res;
+        }
         Arrays.sort(nums);
         int n = nums.length;
         long target = target1;
@@ -26,7 +27,6 @@ class Solution {
                         quads.add(nums[left]);
                         quads.add(nums[right]);
                         res.add(quads);
-                        
                         while(left < right && nums[left] == quads.get(2)){
                             left++;
                         }
