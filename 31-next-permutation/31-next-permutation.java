@@ -1,6 +1,6 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        if(nums == null || nums.length <= 1){
+        if(nums == null || nums.length == 0){
             return;
         }
         int i = nums.length - 2;
@@ -23,11 +23,11 @@ class Solution {
         nums[second] = temp;
     }
     
-    public void reverse(int[] nums, int start, int end){
-        while(start < end){
-            swap(nums, start, end);
-            start++;
-            end--;
+    public void reverse(int[] nums, int i, int j){
+        while(i < j){
+            swap(nums, i, j);
+            i++;
+            j--;
         }
     }
 }
