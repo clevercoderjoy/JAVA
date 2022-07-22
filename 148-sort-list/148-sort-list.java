@@ -10,58 +10,44 @@
  */
 class Solution {
     public ListNode sortList(ListNode head) {
-        if(head == null || head.next == null){
+        if(head == null || head.next == null)
             return head;
+        ListNode temp = head;
+        ListNode fast = head;
+        ListNode slow = head;
+        while(fast != null && fast.next != null){
+            temp = slow;
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        ListNode mid = getMid(head);
+        temp.next = null;
         ListNode left = sortList(head);
-        ListNode right = sortList(mid);
+        ListNode right = sortList(slow);
         return merge(left, right);
     }
     
-    private ListNode merge(ListNode list1, ListNode list2){
-        ListNode dummyHead = new ListNode();
-        ListNode tail = dummyHead;
-        while(list1 != null && list2 != null){
-            if(list1.val < list2.val){
-                tail.next = list1;
-                list1 = list1.next;
-                tail = tail.next;
+    public ListNode merge(ListNode l1, ListNode l2){
+        ListNode temp = new ListNode(0);
+        ListNode currNode = temp;
+        while(l1 != null && l2 != null){
+            if(l1.val < l2.val){
+                currNode.next = l1;
+                l1 = l1.next;
             }
             else{
-                tail.next = list2;
-                list2 = list2.next;
-                tail = tail.next;
+                currNode.next = l2;
+                l2 = l2.next;
             }
+            currNode = currNode.next;
         }
-        if(list1 != null){
-            tail.next = list1;
+        if(l1 != null){
+            currNode.next = l1;
+            l1 = l1.next;
         }
-        else{
-            tail.next = list2;
+        if(l2 != null){
+            currNode.next = l2;
+            l2 = l2.next;
         }
-        return dummyHead.next;
-    }
-    
-    private ListNode getMid(ListNode head){
-        ListNode midPrev = null;
-        while(head != null && head.next != null){
-            if(midPrev == null){
-                midPrev = head;
-            }
-            else{
-                midPrev = midPrev.next;
-            }
-            head = head.next.next;
-        }
-        ListNode mid = midPrev.next;
-        midPrev.next = null;
-        return mid;
+        return temp.next;
     }
 }
-
-
-
-
-
-
