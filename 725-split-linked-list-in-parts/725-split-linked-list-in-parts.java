@@ -19,8 +19,8 @@ class Solution {
         }
         int len = tLen / k;
         int dist = tLen % k;
-        ListNode temp = head;
         ListNode prev = null;
+        ListNode temp = head;
         int h = 0;
         while(temp != null && h < k){
             res[h] = temp;
