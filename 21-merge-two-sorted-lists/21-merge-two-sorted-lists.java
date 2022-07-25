@@ -22,12 +22,11 @@ class Solution {
         ListNode res = l1;
         while(l1 != null && l2 != null){
             ListNode temp = null;
-            while(l1 != null && l1.val <= l2.val){
+            while(l1 !=  null && l1.val <= l2.val){
                 temp = l1;
                 l1 = l1.next;
             }
             temp.next = l2;
-            
             ListNode tmp = l1;
             l1 = l2;
             l2 = tmp;
